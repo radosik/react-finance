@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import HomePage from './components/HomePage';
+import Receipt from './components/Receipt';
+import ReceiptForm from './components/ReceiptForm';
+import Shops from './components/Shops';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar className="navbar"/>
+      <Switch>
+        <Route exact path='/home' component={HomePage} />
+        <Route path='/shops' component={Shops} />
+        <Route path='/receipt' component={Receipt} />
+      </Switch>
+      <Route path='/receiptForm' component={ReceiptForm} />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
